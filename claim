@@ -4,6 +4,8 @@ let email = [
 "viraayudia2018@gmail.com", 
 ];
 
+let token = "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"
+
 let address = "0x6c4be5672474226bce031e6e0f44b04847ecffc6";
 
 async function claim(email) {
