@@ -1,0 +1,40 @@
+const axios = require("axios");
+let email = [
+"aureliashafira2018@gmail.com", 
+"viraayudia2018@gmail.com", 
+];
+
+let address = "0x6c4be5672474226bce031e6e0f44b04847ecffc6";
+
+async function claim(email) {
+  try {
+    let url = "https://paxunitas.com/assets/api/api.php";
+    let response = await axios.post(url, {
+      func: "verifyUser",
+      wallet: address,
+      email: email,
+    });
+
+    if (response.data != null) {
+      console.log(
+        "\u001b[33m" +
+          email +
+          "\u001b[0m: \u001b[31m" +
+          response.data.msg +
+          "\u001b[0m"
+      );
+    }
+  } catch (err) {
+    console.error(err.message);
+  }
+}
+
+async function main() {
+  for (let i = 0; i < email.length; i++) {
+    await claim(email[i]);
+  }
+
+  await main();
+}
+
+main();
